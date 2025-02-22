@@ -45,10 +45,9 @@ class LoginForm(AuthenticationForm):
 
 class RoleUpgradeRequestForm(forms.Form):
     requested_role = forms.ChoiceField(
-        choices=[(CustomUser.ROLE_DEVELOPER, 'Developer'), (CustomUser.ROLE_DESIGNER, 'Designer')],
+        choices=[(CustomUser.ROLE_DEVELOPER, 'Developer'), (CustomUser.ROLE_DESIGNER, 'Designer'), (CustomUser.ROLE_DEV_DES, 'Dev/Des')],
         label="Request Role Upgrade",
     )
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Loại bỏ help_text mặc định từ tất cả các trường
@@ -59,7 +58,7 @@ class RoleUpgradeRequestForm(forms.Form):
         """Kiểm tra sự hợp lệ của requested_role"""
         requested_role = self.cleaned_data.get('requested_role')
         
-        if requested_role not in [CustomUser.ROLE_DEVELOPER, CustomUser.ROLE_DESIGNER]:
+        if requested_role not in [CustomUser.ROLE_DEVELOPER, CustomUser.ROLE_DESIGNER, CustomUser.ROLE_DEV_DES]:
             raise forms.ValidationError('Invalid role selection.')
         
         return requested_role

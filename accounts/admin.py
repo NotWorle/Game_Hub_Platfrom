@@ -12,7 +12,7 @@ class RoleRequestAdmin(admin.ModelAdmin):
     def approve_request(self, request, queryset):
         approved_count = 0
         for user in queryset.filter(request_status='pending'):
-            if user.requested_role and user.requested_role in [CustomUser.ROLE_DEVELOPER, CustomUser.ROLE_DESIGNER]:
+            if user.requested_role and user.requested_role in [CustomUser.ROLE_DEVELOPER, CustomUser.ROLE_DESIGNER, CustomUser.ROLE_DEV_DES]:
                 user.role = user.requested_role
                 user.request_status = 'approved'
                 user.requested_role = None

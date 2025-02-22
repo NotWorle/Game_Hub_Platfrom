@@ -28,6 +28,7 @@ class CustomUser(AbstractUser):
     ROLE_DEVELOPER = 'developer'
     ROLE_DESIGNER = 'designer'
     ROLE_SYSTEM_ADMIN = 'admin'
+    ROLE_DEV_DES = 'dev/des'
 
     STATUS_PENDING = 'pending'
     STATUS_APPROVED = 'approved'
@@ -38,6 +39,7 @@ class CustomUser(AbstractUser):
         (ROLE_DEVELOPER, 'Developer'),
         (ROLE_DESIGNER, 'Designer'),
         (ROLE_SYSTEM_ADMIN, 'Admin'),
+        (ROLE_DEV_DES, 'Dev/Des'),
     ]
     
     REQUEST_STATUS_CHOICES = [
